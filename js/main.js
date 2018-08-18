@@ -364,7 +364,7 @@ function load() {
     var loader = new THREE.OBJLoader();
     loader.load('data/model_01.obj', function(obj) {
         var box = new THREE.Box3();
-        obj.scale.set(0.0001, 0.0001, 0.0001);
+        obj.scale.set(0.000001, 0.000001, 0.000001);
         obj.rotation.x = -Math.PI / 2;
         box.setFromObject(obj);
         var center = new THREE.Vector3();
