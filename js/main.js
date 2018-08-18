@@ -332,17 +332,12 @@ function texturesLoad() {
     };
     let img = new Image();
     img.onload = onReady;
-    img.src = 'data/textures/AKMS_Diff.jpg';
+    img.src = 'data/textures/01_matcolor.jpg';
     let texture = new THREE.Texture(img);
     texture.needsUpdate = true;
     textures.push(texture);
 
-    let img2 = new Image();
-    img2.onload = onReady;
-    img2.src = 'data/textures/AKMS_Norm.png';
-    let texture2 = new THREE.Texture(img2);
-    texture2.needsUpdate = true;
-    textures.push(texture2);
+
 
     let img3 = new Image();
     img3.onload = onReady;
@@ -367,9 +362,9 @@ function load() {
         }*/
     };
     var loader = new THREE.OBJLoader();
-    loader.load('data/AKM_LP_Final.obj', function(obj) {
+    loader.load('data/model_01.obj', function(obj) {
         var box = new THREE.Box3();
-        obj.scale.set(0.01, 0.01, 0.01);
+        obj.scale.set(0.0001, 0.0001, 0.0001);
         obj.rotation.x = -Math.PI / 2;
         box.setFromObject(obj);
         var center = new THREE.Vector3();
@@ -384,8 +379,7 @@ function load() {
                 side: 2,
                 color: 0xffffff,
                 map: textures[0],
-                normalMap: textures[1],
-                metalness: 0.7
+                metalness: 0.5
 
             });
             //obj.children[i].geometry.center();

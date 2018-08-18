@@ -20,10 +20,9 @@ toolbox.precache(["index.html",
     "data/data/10.patt",
     "data/data/camera_para.dat",
     "data/Pallet.obj",
-    "data/AKM_LP_Final.obj",
+    "data/model_01.obj",
     "data/textures/Pallet_CM.jpg",
-    "data/textures/AKMS_Diff.jpg",
-    "data/textures/AKMS_Norm.png"
+    "data/textures/01_matcolor.jpg"
 ]);
 toolbox.router.get('/images/*', toolbox.cacheFirst);
 toolbox.router.get('/*', toolbox.networkFirst, { networkTimeoutSeconds: 5 });
