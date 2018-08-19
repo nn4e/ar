@@ -375,21 +375,30 @@ function load() {
             //obj.children[i].material = new THREE.MeshBasicMaterial({ side: 2, color: 65535 + 10 * Math.random() * 65535 });
             //let color = obj.children[i].material.color;
             //obj.children[i].geometry.computeVertexNormals();
-            obj.children[i].material = new THREE.MeshStandardMaterial({
+            /*obj.children[i].material = new THREE.MeshStandardMaterial({
                 side: 2,
                 color: 0xffffff,
                 map: textures[0],
                 metalness: 0.5
 
-            });
+            });*/
             //obj.children[i].geometry.center();
             obj.children[i].position.add(center);
 
 
-            textures[0].needsUpdate = true;
+
             //textures[0].anisotropy = 16;
 
         }
+        obj.children[0].material = new THREE.MeshLambertMaterial({
+            side: 2,
+            map: textures[0]
+        });
+
+        obj.children[1].material = new THREE.MeshStandardMaterial({
+            side: 2
+        });
+        textures[0].needsUpdate = true;
         //console.log(obj);
 
 
