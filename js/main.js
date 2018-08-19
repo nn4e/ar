@@ -371,33 +371,40 @@ function load() {
         box.getCenter(center);
         center.multiplyScalar(-1);
 
-        for (let i in obj.children) {
-            //obj.children[i].material = new THREE.MeshBasicMaterial({ side: 2, color: 65535 + 10 * Math.random() * 65535 });
-            //let color = obj.children[i].material.color;
-            //obj.children[i].geometry.computeVertexNormals();
-            /*obj.children[i].material = new THREE.MeshStandardMaterial({
-                side: 2,
-                color: 0xffffff,
-                map: textures[0],
-                metalness: 0.5
-
-            });*/
-            //obj.children[i].geometry.center();
-            obj.children[i].position.add(center);
-
-
-
-            //textures[0].anisotropy = 16;
-
-        }
-        obj.children[0].material = new THREE.MeshLambertMaterial({
+        //for (let i in obj.children) {
+        //obj.children[i].material = new THREE.MeshBasicMaterial({ side: 2, color: 65535 + 10 * Math.random() * 65535 });
+        //let color = obj.children[i].material.color;
+        //obj.children[i].geometry.computeVertexNormals();
+        /*obj.children[i].material = new THREE.MeshStandardMaterial({
             side: 2,
-            map: textures[0]
-        });
+            color: 0xffffff,
+            map: textures[0],
+            metalness: 0.5
 
-        obj.children[1].material = new THREE.MeshStandardMaterial({
-            side: 2
-        });
+        });*/
+        //obj.children[i].geometry.center();
+        //obj.children[i].position.add(center);
+
+
+
+        //textures[0].anisotropy = 16;
+
+        //}
+        obj.children[0].position.add(center);
+
+        obj.children[0].material = [new THREE.MeshLambertMaterial({
+                side: 2,
+                map: textures[0]
+            }),
+
+            new THREE.MeshStandardMaterial({
+                side: 2
+            }),
+
+            new THREE.MeshStandardMaterial({
+                side: 2
+            })
+        ];
         textures[0].needsUpdate = true;
         //console.log(obj);
 
