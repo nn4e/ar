@@ -284,7 +284,7 @@ function animate(nowMsec) {
 
     for (var i = 0; i < modelCount; i++) {
 
-        objects[i].rotation.x = vangle;
+        //objects[i].rotation.x = vangle;
 
     }
 
