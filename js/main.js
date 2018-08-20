@@ -412,7 +412,7 @@ function load() {
         ];
         textures[0].needsUpdate = true;
         obj.position.x = 0.4;
-        obj.position.x = 0.2;
+        obj.position.z = 0.2;
         //console.log(obj);
 
 
