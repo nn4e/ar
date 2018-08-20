@@ -2,7 +2,7 @@
     "name": "AR",
     "short_name": "AR",
     "lang": "ru-RU",
-    "start_url": "/ar/",
+    "start_url": "/ar/pwa.html",
     "display": "fullscreen",
     "icons": [{
             "src": "/ar/icons/android-chrome-192x192.png",

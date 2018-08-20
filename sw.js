@@ -5,7 +5,7 @@ toolbox.precache(["index.html",
     "js/three.min.js",
     "js/OBJLoader.js",
     "js/ar.js",
-    "js/gyro.js",
+    /*"js/gyro.js",*/
     "js/jquery-3.3.1.min.js",
     "js/main.js",
     "data/data/1.patt",

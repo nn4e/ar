@@ -83,3 +83,7 @@ body {
     font-size: 18px;
     cursor: pointer;
 }
+
+li {
+    margin-top: 10px;
+}

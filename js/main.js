@@ -267,20 +267,16 @@ function animate(nowMsec) {
 
 
 
-    //console.log(gyro.getOrientation());
-    let orient = gyro.getOrientation();
+
+    /*let orient = gyro.getOrientation();
     let alpha = orient.alpha || 0;
     let beta = orient.beta || 0;
     let gamma = orient.gamma || 0;
-    //vangle = -(gamma - 90) * Math.PI / 180;
+    
 
-    //vangle = beta * Math.PI / 180;
+    vangle = -(beta - 90) * Math.PI / 180;*/
 
 
-    vangle = -(beta - 90) * Math.PI / 180;
-
-    //setSprite(vangle, 0);
-    //setSprite(0, 0);
 
     for (var i = 0; i < modelCount; i++) {
 
