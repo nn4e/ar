@@ -363,13 +363,14 @@ function load() {
     };
     var loader = new THREE.OBJLoader();
     loader.load('data/model_01.obj', function(obj) {
-        var box = new THREE.Box3();
         obj.scale.set(0.000001, 0.000001, 0.000001);
+        /*var box = new THREE.Box3();
+       
         obj.rotation.x = -Math.PI / 2;
         box.setFromObject(obj);
         var center = new THREE.Vector3();
         box.getCenter(center);
-        center.multiplyScalar(-1);
+        center.multiplyScalar(-1);*/
 
         //for (let i in obj.children) {
         //obj.children[i].material = new THREE.MeshBasicMaterial({ side: 2, color: 65535 + 10 * Math.random() * 65535 });
@@ -390,7 +391,7 @@ function load() {
         //textures[0].anisotropy = 16;
 
         //}
-        obj.children[0].position.add(center);
+        //obj.children[0].position.add(center);
 
         obj.children[0].material = [new THREE.MeshLambertMaterial({
                 side: 2,
@@ -424,29 +425,14 @@ function load() {
     });
 
     var loader2 = new THREE.OBJLoader();
-    loader2.load('data/Pallet.obj', function(obj) {
+    loader2.load('data/model_2.obj', function(obj) {
 
+        obj.scale.set(0.0001, 0.0001, 0.0001);
 
-        for (let i in obj.children) {
-            //obj.children[i].material = new THREE.MeshBasicMaterial({ side: 2, color: 65535 + 10 * Math.random() * 65535 });
-            //let color = obj.children[i].material.color;
-            //obj.children[i].geometry.computeVertexNormals();
-            obj.children[i].material = new THREE.MeshStandardMaterial({
-                side: 2,
-                color: 0xffffff,
-                map: textures[2],
-                metalness: 0.01
-
-            });
-
-
-
-            textures[0].needsUpdate = true;
-
-
-        }
-        //console.log(obj);
-
+        obj.children[0].material = [
+            new THREE.MeshStandardMaterial({ color: 0xF0FF00 }),
+            new THREE.MeshStandardMaterial({ color: 0xFFAE4F })
+        ];
 
         var object = new THREE.Group();
         var object2 = new THREE.Group();
