@@ -365,6 +365,9 @@ function load() {
     loader.load('data/model_01.obj', function(obj) {
         obj.scale.set(0.000001, 0.000001, 0.000001);
         obj.rotation.x = -Math.PI / 2;
+        var box = new THREE.Box3();
+        box.setFromObject(obj);
+        console.log(box);
         /*var box = new THREE.Box3();
        
         
@@ -408,6 +411,7 @@ function load() {
             })
         ];
         textures[0].needsUpdate = true;
+        obj.children[0].position.x += 0.3;
         //console.log(obj);
 
 
