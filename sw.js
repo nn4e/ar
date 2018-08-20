@@ -1,6 +1,6 @@
 'use strict';
 importScripts('sw-toolbox.js');
-toolbox.precache(["index.html",
+toolbox.precache(["pwa.html",
     "css/style.css",
     "js/three.min.js",
     "js/OBJLoader.js",
