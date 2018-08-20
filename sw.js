@@ -21,7 +21,7 @@ toolbox.precache(["index.html",
     "data/data/camera_para.dat",
     "data/Pallet.obj",
     "data/model_01.obj",
-    "data/textures/Pallet_CM.jpg",
+    "data/model_02.obj",
     "data/textures/01_matcolor.jpg"
 ]);
 toolbox.router.get('/images/*', toolbox.cacheFirst);

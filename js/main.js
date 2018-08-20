@@ -339,12 +339,12 @@ function texturesLoad() {
 
 
 
-    let img3 = new Image();
+    /*let img3 = new Image();
     img3.onload = onReady;
     img3.src = 'data/textures/Pallet_CM.jpg';
     let texture3 = new THREE.Texture(img3);
     texture3.needsUpdate = true;
-    textures.push(texture3);
+    textures.push(texture3);*/
 
 
 
@@ -364,9 +364,10 @@ function load() {
     var loader = new THREE.OBJLoader();
     loader.load('data/model_01.obj', function(obj) {
         obj.scale.set(0.000001, 0.000001, 0.000001);
+        obj.rotation.x = -Math.PI / 2;
         /*var box = new THREE.Box3();
        
-        obj.rotation.x = -Math.PI / 2;
+        
         box.setFromObject(obj);
         var center = new THREE.Vector3();
         box.getCenter(center);
