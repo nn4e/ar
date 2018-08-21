@@ -43,7 +43,7 @@ var onRenderFcts = [];
 ////////////////////////////////////////////////////////////////////////////////
 
 
-var arToolkitSource, arToolkitContext;
+var arToolkitSource, arToolkitContext, smooth;
 
 function onResize() {
     arToolkitSource.onResize()
@@ -71,180 +71,188 @@ var clock = new THREE.Clock();
 
 function init() {
     $('#instrBox').hide();
-    arToolkitSource = new THREEx.ArToolkitSource({
-        // to read from the webcam 
-        sourceType: 'webcam',
+    if (!arToolkitSource) {
+        arToolkitSource = new THREEx.ArToolkitSource({
+            // to read from the webcam 
+            sourceType: 'webcam',
 
 
-    })
-
-    arToolkitSource.init(function onReady() {
-        onResize()
-    });
-
-    // handle resize
-    window.addEventListener('resize', function() {
-        onResize()
-    });
-
-
-    container = document.createElement('div');
-    container.setAttribute("id", "renderBox");
-    document.body.appendChild(container);
-    // scene
-    /*scene = new THREE.Scene();
-
-
-    camera = new THREE.Camera();
-    scene.add(camera);*/
-
-
-
-
-    // create atToolkitContext
-    arToolkitContext = new THREEx.ArToolkitContext({
-            cameraParametersUrl: THREEx.ArToolkitContext.baseURL + 'data/data/camera_para.dat',
-            detectionMode: 'mono',
         })
-        // initialize it
-    arToolkitContext.init(function onCompleted() {
-        // copy projection matrix to camera
-        //camera.projectionMatrix.copy(arToolkitContext.getProjectionMatrix());
-        for (var i = 0; i < modelCount; i++) {
 
-
-            cams[i].projectionMatrix.copy(arToolkitContext.getProjectionMatrix());
-        }
-    })
-
-    // update artoolkit on every frame
-    onRenderFcts.push(function() {
-        if (arToolkitSource.ready === false) return
-
-        arToolkitContext.update(arToolkitSource.domElement)
-
-        // update scene.visible if the marker is seen
-
-        //scene.visible = camera.visible;
-        for (var i = 0; i < modelCount; i++) {
-            scenes[i].visible = cams[i].visible;
-        }
-
-
-
-    });
-
-    ////////////////////////////////////////////////////////////////////////////////
-    //          Create a ArMarkerControls
-    ////////////////////////////////////////////////////////////////////////////////
-
-    // init controls for camera
-    //console.log(THREEx.ArMarkerControls);
-
-    for (var i = 0; i < modelCount; i++) {
-        cams[i] = new THREE.Camera();
-
-        mc[i] = new THREEx.ArMarkerControls(arToolkitContext, cams[i], {
-            type: 'pattern',
-            patternUrl: 'data/data/' + (i + 1) + '.patt',
-            changeMatrixMode: 'cameraTransformMatrix'
+        arToolkitSource.init(function onReady() {
+            onResize()
         });
-        //scenes[i] = new THREE.Scene();
-        scenes[i].add(cams[i]);
-        scenes[i].visible = false;
-        scenes[i].add(new THREE.AmbientLight(0x555555));
 
-        let pointLight = new THREE.PointLight(0xffffff, 3, 10000, 2);
-        pointLight.position.set(0, 15, -30);
-        scenes[i].add(pointLight);
+        // handle resize
+        window.addEventListener('resize', function() {
+            onResize()
+        });
+
+
+        container = document.createElement('div');
+        container.setAttribute("id", "renderBox");
+        document.body.appendChild(container);
+        // scene
+        /*scene = new THREE.Scene();
+
+
+        camera = new THREE.Camera();
+        scene.add(camera);*/
+
+
+        camera = new THREE.Camera();
+        smooth = new THREEx.ArSmoothedControls(camera);
+
+        // create atToolkitContext
+        arToolkitContext = new THREEx.ArToolkitContext({
+                cameraParametersUrl: THREEx.ArToolkitContext.baseURL + 'data/data/camera_para.dat',
+                detectionMode: 'mono',
+            })
+            // initialize it
+        arToolkitContext.init(function onCompleted() {
+            // copy projection matrix to camera
+            camera.projectionMatrix.copy(arToolkitContext.getProjectionMatrix());
+            for (var i = 0; i < modelCount; i++) {
+
+
+                cams[i].projectionMatrix.copy(arToolkitContext.getProjectionMatrix());
+            }
+        })
+
+        // update artoolkit on every frame
+        onRenderFcts.push(function() {
+            if (arToolkitSource.ready === false) return
+
+            arToolkitContext.update(arToolkitSource.domElement)
+
+            // update scene.visible if the marker is seen
+
+            //scene.visible = camera.visible;
+            let cam;
+            for (var i = 0; i < modelCount; i++) {
+                scenes[i].visible = cams[i].visible;
+                cam = cams[i];
+            }
+            if (cam) {
+                smooth.update(cam);
+            }
+
+
+
+        });
+
+        ////////////////////////////////////////////////////////////////////////////////
+        //          Create a ArMarkerControls
+        ////////////////////////////////////////////////////////////////////////////////
+
+        // init controls for camera
+        //console.log(THREEx.ArMarkerControls);
+
+        for (var i = 0; i < modelCount; i++) {
+            cams[i] = new THREE.Camera();
+
+            mc[i] = new THREEx.ArMarkerControls(arToolkitContext, cams[i], {
+                type: 'pattern',
+                patternUrl: 'data/data/' + (i + 1) + '.patt',
+                changeMatrixMode: 'cameraTransformMatrix'
+            });
+            //scenes[i] = new THREE.Scene();
+            scenes[i].add(cams[i]);
+            scenes[i].visible = false;
+            scenes[i].add(new THREE.AmbientLight(0x555555));
+
+            let pointLight = new THREE.PointLight(0xffffff, 3, 10000, 2);
+            pointLight.position.set(0, 15, -30);
+            scenes[i].add(pointLight);
+        }
+
+
+
+        //scene.visible = false
+
+
+
+        // renderer
+        renderer = new THREE.WebGLRenderer({ antialias: false, alpha: true });
+
+        renderer.setPixelRatio(window.devicePixelRatio);
+        renderer.setSize(1024, 768);
+        container.appendChild(renderer.domElement);
+        renderer.domElement.style.position = 'absolute'
+        renderer.domElement.style.top = '0px'
+        renderer.domElement.style.left = '0px'
+        rendrCanvas = renderer.domElement;
+        renderer.gammaInput = true;
+        renderer.gammaOutput = true;
+
+        //window.addEventListener('resize', onWindowResize, false);
+
+        container.addEventListener('touchstart', function(e) {
+            e.preventDefault();
+            touch.x = e.touches[0].clientX;
+            touch.y = e.touches[0].clientY;
+            if (e.touches[1]) {
+                touch2.x = e.touches[1].clientX;
+                touch2.y = e.touches[1].clientY;
+            }
+
+        }, false);
+
+        container.addEventListener('touchmove', function(e) {
+            if (e.touches[1]) {
+                //console.log('zoom');
+                let t1 = new THREE.Vector2().set(e.touches[0].clientX, e.touches[0].clientY);
+                let t2 = new THREE.Vector2().set(e.touches[1].clientX, e.touches[1].clientY);
+                let s1 = new THREE.Vector2().copy(touch);
+                let s2 = new THREE.Vector2().copy(touch2);
+                /*if (s1.distanceTo(s2) > t1.distanceTo(t2)) {
+
+                } else if (s1.distanceTo(s2) < t1.distanceTo(t2)) {
+
+                }*/
+                let scale = t1.distanceTo(t2) / s1.distanceTo(s2);
+                //uniforms.scale.value.multiplyScalar(scale);
+
+                for (var i = 0; i < modelCount; i++) {
+                    if (scenes[i].visible) {
+                        objects[i].scale.multiplyScalar(scale);
+                    }
+                }
+
+                touch2.x = e.touches[1].clientX;
+                touch2.y = e.touches[1].clientY;
+            } else {
+
+                var swipe = 2 * Math.PI * (touch.x - e.touches[0].clientX) * 0.5 / window.innerWidth;
+
+                for (var i = 0; i < modelCount; i++) {
+                    if (scenes[i].visible) {
+                        objects[i].children[0].rotation.z += swipe;
+                    }
+                }
+
+
+
+
+
+                /*vangle -= Math.PI * (touch.y - e.touches[0].clientY) * 0.5 / window.innerHeight;
+                if (vangle > angleStep * 8) {
+                    vangle = angleStep * 8;
+                }
+                if (vangle < -angleStep * 8) {
+                    vangle = -angleStep * 8;
+                }*/
+
+                //console.log(vangle);
+                //console.log(vangle, hangle);
+            }
+            touch.x = e.touches[0].clientX;
+            touch.y = e.touches[0].clientY;
+
+        }, false);
+
+        animate();
     }
-
-
-
-    //scene.visible = false
-
-
-
-    // renderer
-    renderer = new THREE.WebGLRenderer({ antialias: false, alpha: true });
-
-    renderer.setPixelRatio(window.devicePixelRatio);
-    renderer.setSize(1024, 768);
-    container.appendChild(renderer.domElement);
-    renderer.domElement.style.position = 'absolute'
-    renderer.domElement.style.top = '0px'
-    renderer.domElement.style.left = '0px'
-    rendrCanvas = renderer.domElement;
-    renderer.gammaInput = true;
-    renderer.gammaOutput = true;
-
-    //window.addEventListener('resize', onWindowResize, false);
-
-    container.addEventListener('touchstart', function(e) {
-        e.preventDefault();
-        touch.x = e.touches[0].clientX;
-        touch.y = e.touches[0].clientY;
-        if (e.touches[1]) {
-            touch2.x = e.touches[1].clientX;
-            touch2.y = e.touches[1].clientY;
-        }
-
-    }, false);
-
-    container.addEventListener('touchmove', function(e) {
-        if (e.touches[1]) {
-            //console.log('zoom');
-            let t1 = new THREE.Vector2().set(e.touches[0].clientX, e.touches[0].clientY);
-            let t2 = new THREE.Vector2().set(e.touches[1].clientX, e.touches[1].clientY);
-            let s1 = new THREE.Vector2().copy(touch);
-            let s2 = new THREE.Vector2().copy(touch2);
-            /*if (s1.distanceTo(s2) > t1.distanceTo(t2)) {
-
-            } else if (s1.distanceTo(s2) < t1.distanceTo(t2)) {
-
-            }*/
-            let scale = t1.distanceTo(t2) / s1.distanceTo(s2);
-            //uniforms.scale.value.multiplyScalar(scale);
-
-            for (var i = 0; i < modelCount; i++) {
-                if (scenes[i].visible) {
-                    objects[i].scale.multiplyScalar(scale);
-                }
-            }
-
-            touch2.x = e.touches[1].clientX;
-            touch2.y = e.touches[1].clientY;
-        } else {
-
-            var swipe = 2 * Math.PI * (touch.x - e.touches[0].clientX) * 0.5 / window.innerWidth;
-
-            for (var i = 0; i < modelCount; i++) {
-                if (scenes[i].visible) {
-                    objects[i].children[0].rotation.z += swipe;
-                }
-            }
-
-
-
-
-
-            /*vangle -= Math.PI * (touch.y - e.touches[0].clientY) * 0.5 / window.innerHeight;
-            if (vangle > angleStep * 8) {
-                vangle = angleStep * 8;
-            }
-            if (vangle < -angleStep * 8) {
-                vangle = -angleStep * 8;
-            }*/
-
-            //console.log(vangle);
-            //console.log(vangle, hangle);
-        }
-        touch.x = e.touches[0].clientX;
-        touch.y = e.touches[0].clientY;
-
-    }, false);
-
-    animate();
 }
 
 function onWindowResize() {
@@ -283,7 +291,7 @@ function animate(nowMsec) {
     for (var i = 0; i < modelCount; i++) {
         if (cams[i].visible) {
             //objects[i].rotation.x = vangle;
-            console.log(cams[i]);
+            //console.log(cams[i]);
         }
 
     }
@@ -302,7 +310,7 @@ function render() {
     for (var i = 0; i < modelCount; i++) {
         if (scenes[i].visible && !rended) {
             //console.log('render', i);
-            renderer.render(scenes[i], cams[i]);
+            renderer.render(scenes[i], camera);
             rended = true;
         }
     }
@@ -466,4 +474,9 @@ setTimeout(texturesLoad, 150);
 $('#start').click(function() {
 
     init();
+});
+
+$('#close').click(function() {
+    $('#instrBox').show();
+
 });
