@@ -432,8 +432,8 @@ function load() {
         obj.scale.set(0.0001, 0.0001, 0.0001);
 
         obj.children[0].material = [
-            new THREE.MeshLambertMaterial({ color: 0xF0FF00, side: 2 }),
-            new THREE.MeshLambertMaterial({ color: 0xFFAE4F, side: 2 })
+            new THREE.MeshBasicMaterial({ color: 0xF0FF00, side: 2 }),
+            new THREE.MeshBasicMaterial({ color: 0xFFAE4F, side: 2 })
         ];
 
         obj.position.z = -0.5;
