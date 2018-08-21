@@ -234,8 +234,14 @@ function init() {
 
 
 
-                /*vangle -= Math.PI * (touch.y - e.touches[0].clientY) * 0.5 / window.innerHeight;
-                if (vangle > angleStep * 8) {
+                vangle -= Math.PI * (touch.y - e.touches[0].clientY) * 0.5 / window.innerHeight;
+                for (var i = 0; i < modelCount; i++) {
+                    if (scenes[i].visible) {
+                        objects[i].rotation.x += swipe;
+                    }
+                }
+
+                /*if (vangle > angleStep * 8) {
                     vangle = angleStep * 8;
                 }
                 if (vangle < -angleStep * 8) {
@@ -277,13 +283,13 @@ function animate(nowMsec) {
 
 
 
-    let orient = gyro.getOrientation();
+    /*let orient = gyro.getOrientation();
     let alpha = orient.alpha || 0;
     let beta = orient.beta || 0;
     let gamma = orient.gamma || 0;
 
 
-    vangle = -(beta - 90) * Math.PI / 180;
+    vangle = -(beta - 90) * Math.PI / 180;*/
 
 
 
