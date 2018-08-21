@@ -111,6 +111,13 @@ function init() {
         // copy projection matrix to camera
         //camera.projectionMatrix.copy(arToolkitContext.getProjectionMatrix());
         for (var i = 0; i < modelCount; i++) {
+            let newmatrix = arToolkitContext.getProjectionMatrix();
+            let pos = new THREE.Vector3();
+            let scale = new THREE.Vector3();
+            let quat = new THREE.Quaternion();
+            newmatrix.decompose(pos, quat, scale);
+            console.log(pos, quat, scale);
+
             cams[i].projectionMatrix.copy(arToolkitContext.getProjectionMatrix());
         }
     })
