@@ -283,7 +283,7 @@ function animate(nowMsec) {
     for (var i = 0; i < modelCount; i++) {
         if (cams[i].visible) {
             //objects[i].rotation.x = vangle;
-            console.log(cams[i]) l
+            console.log(cams[i]);
         }
 
     }
