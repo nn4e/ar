@@ -427,7 +427,7 @@ function load() {
         object.add(obj);
         object2.add(object);
 
-        object2.position.set(0, 0.5, 0);
+        object2.position.set(0, 5, 0);
 
         scenes[0].add(object2);
         objects[0] = object2;
@@ -454,7 +454,7 @@ function load() {
         object.add(obj);
         object2.add(object);
 
-        object2.position.set(0, 0.5, 0);
+        object2.position.set(0, 5, 0);
 
         scenes[1].add(object2);
         objects[1] = object2;
