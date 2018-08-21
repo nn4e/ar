@@ -131,7 +131,9 @@ function init() {
             let cam;
             for (var i = 0; i < modelCount; i++) {
                 scenes[i].visible = cams[i].visible;
-                cam = cams[i];
+                if (cams[i].visible) {
+                    cam = cams[i];
+                }
             }
             if (cam) {
                 smooth.update(cam);
