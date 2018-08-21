@@ -90,8 +90,8 @@ li {
 
 #close {
     position: absolute;
-    right: 32px;
-    top: 32px;
+    right: 2%;
+    top: 2%;
     width: 32px;
     height: 32px;
     opacity: 0.8;

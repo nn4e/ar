@@ -101,7 +101,7 @@ function init() {
 
 
         camera = new THREE.Camera();
-        smooth = new THREEx.ArSmoothedControls(camera);
+        camera.lookAt(new THREE.Vector3(0, 0.5, 0));
 
         // create atToolkitContext
         arToolkitContext = new THREEx.ArToolkitContext({
@@ -131,13 +131,9 @@ function init() {
             let cam;
             for (var i = 0; i < modelCount; i++) {
                 scenes[i].visible = cams[i].visible;
-                if (cams[i].visible) {
-                    cam = cams[i];
-                }
+
             }
-            if (cam) {
-                smooth.update(cam);
-            }
+
 
 
 
@@ -280,19 +276,19 @@ function animate(nowMsec) {
 
 
 
-    /*let orient = gyro.getOrientation();
+    let orient = gyro.getOrientation();
     let alpha = orient.alpha || 0;
     let beta = orient.beta || 0;
     let gamma = orient.gamma || 0;
-    
 
-    vangle = -(beta - 90) * Math.PI / 180;*/
+
+    vangle = -(beta - 90) * Math.PI / 180;
 
 
 
     for (var i = 0; i < modelCount; i++) {
         if (cams[i].visible) {
-            //objects[i].rotation.x = vangle;
+            objects[i].rotation.x = vangle;
             //console.log(cams[i]);
         }
 
