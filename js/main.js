@@ -432,9 +432,11 @@ function load() {
         obj.scale.set(0.0001, 0.0001, 0.0001);
 
         obj.children[0].material = [
-            new THREE.MeshStandardMaterial({ color: 0xF0FF00 }),
-            new THREE.MeshStandardMaterial({ color: 0xFFAE4F })
+            new THREE.MeshLambertMaterial({ color: 0xF0FF00 }),
+            new THREE.MeshLambertMaterial({ color: 0xFFAE4F })
         ];
+
+        obj.position.z = 0.5;
 
         var object = new THREE.Group();
         var object2 = new THREE.Group();
