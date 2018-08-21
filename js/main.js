@@ -283,12 +283,7 @@ function animate(nowMsec) {
     for (var i = 0; i < modelCount; i++) {
         if (cams[i].visible) {
             //objects[i].rotation.x = vangle;
-            let newmatrix = cams[i].projectionMatrix;
-            let pos = new THREE.Vector3();
-            let scale = new THREE.Vector3();
-            let quat = new THREE.Quaternion();
-            newmatrix.decompose(pos, quat, scale);
-            console.log(pos, quat, scale);
+            console.log(cams[i]) l
         }
 
     }
