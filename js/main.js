@@ -429,14 +429,14 @@ function load() {
     var loader2 = new THREE.OBJLoader();
     loader2.load('data/model_2.obj', function(obj) {
 
-        obj.scale.set(0.0001, 0.0001, 0.0001);
+        obj.scale.set(0.0002, 0.0002, 0.0002);
 
         obj.children[0].material = [
             new THREE.MeshBasicMaterial({ color: 0xF0FF00, side: 2 }),
             new THREE.MeshBasicMaterial({ color: 0xFFAE4F, side: 2 })
         ];
 
-        obj.position.z = -0.5;
+        obj.position.z = -0.2;
 
         var object = new THREE.Group();
         var object2 = new THREE.Group();
