@@ -489,3 +489,7 @@ $('#close').click(function() {
     $('#instrBox').show();
 
 });
+
+if (window.matchMedia('(display-mode: fullscreen)').matches) {
+    $('.android-title, .google-chrome, .opera').hide();
+}
