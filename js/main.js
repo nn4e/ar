@@ -492,5 +492,5 @@ $('#close').click(function() {
 
 if (window.matchMedia('(display-mode: fullscreen)').matches) {
     $('.android-title, .google-chrome, .opera').hide();
-    $('#toppadding').css('height', '20%');
+    $('#toppadding').css('height', '15%');
 }
