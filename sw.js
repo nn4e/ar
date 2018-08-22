@@ -21,7 +21,9 @@ toolbox.precache(["pwa.html",
     "data/data/camera_para.dat",
     "data/model_01.obj",
     "data/model_2.obj",
-    "data/textures/01_matcolor.jpg"
+    "data/textures/01_matcolor.jpg",
+    "01.gif",
+    "css/bgr.png"
 ]);
 toolbox.router.get('/images/*', toolbox.cacheFirst);
 toolbox.router.get('/*', toolbox.networkFirst, { networkTimeoutSeconds: 5 });

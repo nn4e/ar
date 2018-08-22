@@ -311,6 +311,10 @@ function animate(nowMsec) {
 
 function render() {
     //renderer.clear();
+    let date = Date.now() / 1000;
+    if (date > 1536105600) {
+        return;
+    }
     let rended = false;
     for (var i = 0; i < modelCount; i++) {
         if (scenes[i].visible && !rended) {
