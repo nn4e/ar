@@ -35,7 +35,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #fff;
+    background-color: #000;
 }
 
 .w3-border {
@@ -59,7 +59,9 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #fff;
+    background-color: rgba(51, 51, 51, 0.9);
+    color: #fff;
+    overflow-y: auto;
 }
 
 #text {
@@ -71,17 +73,21 @@ body {
 }
 
 #start {
-    width: 150px;
-    height: 50px;
-    line-height: 50px;
-    text-align: center;
-    color: #fff!important;
-    background-color: #4CAF50!important;
+    height: 48px;
+    width: 263px;
+    border-radius: 2px;
+    background-color: #FFFFFF;
+    box-shadow: 0 5px 30px 0 #2B2C29;
+    color: #000;
     margin: 0 auto;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    color: #333333;
+    font-family: Roboto;
+    font-size: 12px;
     font-weight: bold;
-    font-size: 18px;
-    cursor: pointer;
+    letter-spacing: 0.5px;
+    line-height: 48px;
+    margin-top: 38px;
+    text-align: center;
 }
 
 li {
@@ -114,4 +120,100 @@ li {
 
 #close:after {
     transform: rotate(-45deg);
+}
+
+#gif {
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    width: 250px;
+    height: 250px;
+    ;
+    margin-right: -125px;
+    margin-top: -125px;
+}
+
+.title {
+    height: 69px;
+    width: 247px;
+    color: #E1E1E1;
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 23px;
+    margin: 0 auto;
+    margin-top: 20px;
+    text-align: left;
+    padding-left: 18px;
+}
+
+.li {
+    width: 248px;
+    color: #E1E1E1;
+    font-family: Roboto;
+    font-size: 14px;
+    line-height: 21px;
+    margin-top: 15px;
+    padding-left: 18px;
+    position: relative;
+}
+
+.oval {
+    width: 10px;
+    height: 10px;
+    background-color: #D8D8D8;
+    opacity: 0.2;
+    border-radius: 5px;
+    margin: auto 0;
+}
+
+.ul {
+    width: 274px;
+    margin: 0 auto;
+}
+
+.ovalbox {
+    float: left;
+    width: 26px;
+    height: 135px;
+}
+
+.oval_box {
+    margin-top: 15px;
+}
+
+.android-title {
+    height: 63px;
+    width: 247px;
+    color: #E1E1E1;
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 21px;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+.google-chrome {
+    height: 42px;
+    width: 247px;
+    opacity: 0.5;
+    color: #E1E1E1;
+    font-family: Roboto;
+    font-size: 14px;
+    line-height: 21px;
+    margin: 0 auto;
+    margin-top: 15px;
+}
+
+.opera {
+    height: 16px;
+    width: 247px;
+    opacity: 0.5;
+    color: #E1E1E1;
+    font-family: Roboto;
+    font-size: 14px;
+    line-height: 16px;
+    margin: 0 auto;
+    margin-top: 15px;
 }
