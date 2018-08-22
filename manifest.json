@@ -4,6 +4,7 @@
     "lang": "ru-RU",
     "start_url": "/ar/pwa.html",
     "display": "fullscreen",
+    "background_color": "#000",
     "icons": [{
             "src": "/ar/icons/android-chrome-192x192.png",
             "sizes": "192x192",
