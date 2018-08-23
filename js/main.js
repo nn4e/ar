@@ -11,7 +11,7 @@ var textures = [];
 var texCount = 0;
 var objCount = 0;
 
-modelCount = 2;
+modelCount = 3;
 
 
 
@@ -453,7 +453,7 @@ function load() {
         obj.scale.set(0.0003, 0.0003, 0.0003);
 
         obj.children[0].material = [
-            new THREE.MeshBasicMaterial({ color: 0xF0FF00, side: 2 }),
+            new THREE.MeshBasicMaterial({ color: 0x8AE0E7, side: 2 }),
             new THREE.MeshBasicMaterial({ color: 0xFFAE4F, side: 2 })
         ];
 
@@ -469,6 +469,44 @@ function load() {
 
         scenes[1].add(object2);
         objects[1] = object2;
+
+        onReady();
+
+    });
+
+    var loader3 = new THREE.OBJLoader();
+    loader3.load('data/model_04_merged.obj', function(obj) {
+
+        obj.scale.set(0.0001, 0.0001, 0.0001);
+
+        obj.children[0].material = [
+            new THREE.MeshLambertMaterial({ color: 0xF0FF00, side: 2 }),
+            new THREE.MeshLambertMaterial({ color: 0xBCBCBC, side: 2 }),
+            new THREE.MeshLambertMaterial({ color: 0xF2F5F2, side: 2 }),
+            new THREE.MeshLambertMaterial({ color: 0xF2D100, side: 2 }),
+            new THREE.MeshLambertMaterial({ color: 0xDFDFDF, side: 2 }),
+            new THREE.MeshLambertMaterial({ color: 0x00B6DA, side: 2 }),
+            new THREE.MeshLambertMaterial({ color: 0xDFDFDA, side: 2 }),
+            new THREE.MeshLambertMaterial({ color: 0xA4B69B, side: 2 }),
+            new THREE.MeshLambertMaterial({ color: 0xBCBCBC, side: 2 }),
+            new THREE.MeshLambertMaterial({ color: 0xBCBCBC, side: 2 }),
+            new THREE.MeshLambertMaterial({ color: 0xBCBCBC, side: 2 }),
+            new THREE.MeshLambertMaterial({ color: 0xBCBCBC, side: 2 }),
+            new THREE.MeshLambertMaterial({ color: 0xBCBCBC, side: 2 })
+        ];
+
+        //obj.position.z = -0.3;
+        obj.children[0].geometry.center();
+
+        var object = new THREE.Group();
+        var object2 = new THREE.Group();
+        object.add(obj);
+        object2.add(object);
+
+        //object2.position.set(0, 5, 0);
+
+        scenes[2].add(object2);
+        objects[2] = object2;
 
         onReady();
 
