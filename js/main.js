@@ -477,22 +477,22 @@ function load() {
     var loader3 = new THREE.OBJLoader();
     loader3.load('data/model_04_merged.obj', function(obj) {
 
-        obj.scale.set(0.00001, 0.00001, 0.00001);
+        obj.scale.set(0.00002, 0.00002, 0.00002);
 
         obj.children[0].material = [
-            new THREE.MeshLambertMaterial({ color: 0xF0FF00, side: 2 }),
-            new THREE.MeshLambertMaterial({ color: 0xBCBCBC, side: 2 }),
-            new THREE.MeshLambertMaterial({ color: 0xF2F5F2, side: 2 }),
-            new THREE.MeshLambertMaterial({ color: 0xF2D100, side: 2 }),
-            new THREE.MeshLambertMaterial({ color: 0xDFDFDF, side: 2 }),
-            new THREE.MeshLambertMaterial({ color: 0x00B6DA, side: 2 }),
-            new THREE.MeshLambertMaterial({ color: 0xDFDFDA, side: 2 }),
-            new THREE.MeshLambertMaterial({ color: 0xA4B69B, side: 2 }),
-            new THREE.MeshLambertMaterial({ color: 0xBCBCBC, side: 2 }),
-            new THREE.MeshLambertMaterial({ color: 0xBCBCBC, side: 2 }),
-            new THREE.MeshLambertMaterial({ color: 0xBCBCBC, side: 2 }),
-            new THREE.MeshLambertMaterial({ color: 0xBCBCBC, side: 2 }),
-            new THREE.MeshLambertMaterial({ color: 0xBCBCBC, side: 2 })
+            new THREE.MeshStandardMaterial({ color: 0xF0FF00, side: 2 }),
+            new THREE.MeshStandardMaterial({ color: 0xBCBCBC, side: 2 }),
+            new THREE.MeshStandardMaterial({ color: 0xF2F5F2, side: 2 }),
+            new THREE.MeshStandardMaterial({ color: 0xF2D100, side: 2 }),
+            new THREE.MeshStandardMaterial({ color: 0xDFDFDF, side: 2 }),
+            new THREE.MeshStandardMaterial({ color: 0x00B6DA, side: 2 }),
+            new THREE.MeshStandardMaterial({ color: 0xDFDFDA, side: 2 }),
+            new THREE.MeshStandardMaterial({ color: 0xA4B69B, side: 2 }),
+            new THREE.MeshStandardMaterial({ color: 0xBCBCBC, side: 2 }),
+            new THREE.MeshStandardMaterial({ color: 0xBCBCBC, side: 2 }),
+            new THREE.MeshStandardMaterial({ color: 0xBCBCBC, side: 2 }),
+            new THREE.MeshStandardMaterial({ color: 0xBCBCBC, side: 2 }),
+            new THREE.MeshStandardMaterial({ color: 0xBCBCBC, side: 2 })
         ];
 
         //obj.position.z = -0.3;
