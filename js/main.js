@@ -477,7 +477,7 @@ function load() {
     var loader3 = new THREE.OBJLoader();
     loader3.load('data/model_04_merged.obj', function(obj) {
 
-        obj.scale.set(0.0001, 0.0001, 0.0001);
+        obj.scale.set(0.00001, 0.00001, 0.00001);
 
         obj.children[0].material = [
             new THREE.MeshLambertMaterial({ color: 0xF0FF00, side: 2 }),
