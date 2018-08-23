@@ -532,6 +532,7 @@ function load() {
 
         ];
         textures[1].needsUpdate = true;
+        textures[1].wrapS = textures[1].wrapT = THREE.MirroredRepeatWrapping;
         textures[2].needsUpdate = true;
         textures[3].needsUpdate = true;
         textures[4].needsUpdate = true;
