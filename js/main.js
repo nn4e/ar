@@ -477,7 +477,7 @@ function load() {
     var loader3 = new THREE.OBJLoader();
     loader3.load('data/model_04_merged.obj', function(obj) {
 
-        obj.scale.set(0.00002, 0.00002, 0.00002);
+        obj.scale.set(0.00003, 0.00003, 0.00003);
         obj.rotation.x = -Math.PI / 2;
 
         obj.children[0].material = [
