@@ -355,6 +355,42 @@ function texturesLoad() {
     textures.push(texture);
 
 
+    let img2 = new Image();
+    img2.onload = onReady;
+    img2.src = 'data/textures/Seamless_ground_dirt_texture.jpg';
+    let texture2 = new THREE.Texture(img);
+    texture2.needsUpdate = true;
+    textures.push(texture2);
+
+    let img3 = new Image();
+    img3.onload = onReady;
+    img3.src = 'data/textures/t4u1gzpcyuwipf4fzecfdxezrcueixf3bnt72zejlc8sdag6ilxftddet7cjxxne-.jpg';
+    let texture3 = new THREE.Texture(img3);
+    texture3.needsUpdate = true;
+    textures.push(texture3);
+
+    let img4 = new Image();
+    img4.onload = onReady;
+    img4.src = 'data/textures/build_02.jpg';
+    let texture4 = new THREE.Texture(img4);
+    texture4.needsUpdate = true;
+    textures.push(texture4);
+
+    let img5 = new Image();
+    img5.onload = onReady;
+    img5.src = 'data/textures/big_build_01.jpg';
+    let texture5 = new THREE.Texture(img5);
+    texture5.needsUpdate = true;
+    textures.push(texture5);
+
+    let img6 = new Image();
+    img6.onload = onReady;
+    img6.src = 'data/textures/build_03_from_c4d.jpg';
+    let texture6 = new THREE.Texture(img6);
+    texture6.needsUpdate = true;
+    textures.push(texture6);
+
+
 
     /*let img3 = new Image();
     img3.onload = onReady;
@@ -489,11 +525,11 @@ function load() {
             new THREE.MeshStandardMaterial({ color: 0x00B6DA, side: 2 }),
             new THREE.MeshStandardMaterial({ color: 0xDFDFDA, side: 2 }),
             new THREE.MeshStandardMaterial({ color: 0xA4B69B, side: 2 }),
-            new THREE.MeshStandardMaterial({ color: 0xBCBCBC, side: 2 }),
-            new THREE.MeshStandardMaterial({ color: 0xBCBCBC, side: 2 }),
-            new THREE.MeshStandardMaterial({ color: 0xBCBCBC, side: 2 }),
-            new THREE.MeshStandardMaterial({ color: 0xBCBCBC, side: 2 }),
-            new THREE.MeshStandardMaterial({ color: 0xBCBCBC, side: 2 })
+            new THREE.MeshStandardMaterial({ map: textures[5], side: 2 }),
+            new THREE.MeshStandardMaterial({ map: textures[3], side: 2 }),
+            new THREE.MeshStandardMaterial({ map: textures[4], side: 2 }),
+            new THREE.MeshStandardMaterial({ map: textures[1], side: 2 }),
+
         ];
 
         //obj.position.z = -0.3;
