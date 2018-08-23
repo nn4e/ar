@@ -358,7 +358,7 @@ function texturesLoad() {
     let img2 = new Image();
     img2.onload = onReady;
     img2.src = 'data/textures/Seamless_ground_dirt_texture.jpg';
-    let texture2 = new THREE.Texture(img);
+    let texture2 = new THREE.Texture(img2);
     texture2.needsUpdate = true;
     textures.push(texture2);
 
@@ -531,6 +531,11 @@ function load() {
             new THREE.MeshStandardMaterial({ map: textures[1], side: 2 }),
 
         ];
+        textures[1].needsUpdate = true;
+        textures[2].needsUpdate = true;
+        textures[3].needsUpdate = true;
+        textures[4].needsUpdate = true;
+        textures[5].needsUpdate = true;
 
         //obj.position.z = -0.3;
         obj.children[0].geometry.center();
